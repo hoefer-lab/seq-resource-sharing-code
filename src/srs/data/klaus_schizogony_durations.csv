@@ -1,0 +1,14 @@
+﻿Analysis 20181219;start replication;Last replication;egress;first to last replication;first replication to egress;Comment
+9;7;136;168;645;805;
+16;3;123;154;600;755;
+Analysis 20190429;;;;;;
+5;31;173;210;710;895;
+06a;23;186;196;815;865;
+8;20;160;193;700;865;
+9;43;189;228;730;925;
+12a;20;181;210;805;950;
+13;33;164;207;655;870;
+14;1;133;151;660;750;1. round of replication already started at start of imaging
+Analysis 20190806;;;;;;
+6;1;122;160;605;795;"1. round of replication already started at start of imaging; double infection"
+20a;1;143;184;710;915;1. round of replication already started at start of imaging
