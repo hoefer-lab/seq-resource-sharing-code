@@ -20,7 +20,8 @@ pip install -e .
 ```
 
 This installs the package in editable mode together with all required
-dependencies.  To include the test dependencies, use:
+dependencies (typical install time: ~1 minute).  To include the test
+dependencies, use:
 
 ```bash
 pip install -e ".[test]"
@@ -30,7 +31,9 @@ pip install -e ".[test]"
 > either install it via conda first (`conda install -c conda-forge numbalsoda`)
 > or install a Fortran compiler (`brew install gcc` on macOS).
 
-> **Tested with:** Python 3.12 on macOS 15 (Apple Silicon / arm64).
+> **Tested with:** Python 3.10 on macOS 15 (Apple Silicon / arm64).
+> A full conda environment specification is provided in
+> [`tested_environment.yml`](tested_environment.yml).
 
 After installation the subpackages `srs.lib`, `srs.model2` and
 `srs.model3` are importable from anywhere in the environment.
@@ -64,7 +67,11 @@ After installation the subpackages `srs.lib`, `srs.model2` and
 
 All figure-generating functions live inside the package and can be called
 from a Python session (or a short script).  Start by activating the
-environment and launching Python from the repository root (`code/`).
+environment and launching Python from the repository root.
+
+> **Expected run times:** Plotting functions take a few
+> minutes each.  Generating the full parameter-scan data for Fig. 4 & Fig. 5
+> (`run_simulation_for_fig45` over the complete grid) takes days to weeks.
 
 ### Figure 2 — Correlated branching process (model 2)
 
