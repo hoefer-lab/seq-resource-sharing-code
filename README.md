@@ -16,16 +16,21 @@ replication timing in *Plasmodium falciparum* schizogony.
 ## Installation
 
 ```bash
-# activate the conda environment that has all dependencies
-conda activate srs_env
+pip install -e .
+```
 
-# install the package in editable mode
-pip install --no-deps -e .
+This installs the package in editable mode together with all required
+dependencies.  To include the test dependencies, use:
+
+```bash
+pip install -e ".[test]"
 ```
 
 > **Note:** If building `numbalsoda` fails (e.g. missing Fortran compiler),
 > either install it via conda first (`conda install -c conda-forge numbalsoda`)
 > or install a Fortran compiler (`brew install gcc` on macOS).
+
+> **Tested with:** Python 3.12 on macOS 15 (Apple Silicon / arm64).
 
 After installation the subpackages `srs.lib`, `srs.model2` and
 `srs.model3` are importable from anywhere in the environment.
