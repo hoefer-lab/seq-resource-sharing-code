@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20698728.svg)](https://doi.org/10.5281/zenodo.20698728)
+
 # Sequential Resource Sharing (SRS)
 
 Companion code for reproducing all figures in:
