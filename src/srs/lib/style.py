@@ -23,6 +23,7 @@ from .enums import DataSet
 colors = ["#058AB0", "#70C9E1", "#EE456D", "#FD9DB5", "#CBCDCF"]
 colors_paulaner = ["#fec21f", "#ed6a0c", "#df0712", "#df017b", "#4a287d"]
 FIGORDNER = str(Path(__file__).resolve().parent.parent / "fig") + "/"
+Path(FIGORDNER).mkdir(parents=True, exist_ok=True)
 ZETALIM = [-0.05, 1.05]
 ETALIM = [-0.05, 1.15]
 

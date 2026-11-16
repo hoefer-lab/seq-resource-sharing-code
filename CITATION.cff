@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper listed under preferred-citation."
+title: "Sequential Resource Sharing (SRS)"
+type: software
+authors:
+  - family-names: Binder
+    given-names: Patrick
+version: 0.1.0
+doi: 10.5281/zenodo.20698728
+date-released: 2026-06-15
+license: MIT
+repository-code: "https://github.com/hoefer-lab/seq-resource-sharing-code"
+preferred-citation:
+  type: article
+  title: "Competitive resource allocation drives asynchronous and rapid nuclear multiplication in the malaria parasite"
+  authors:
+    - family-names: Binder
+      given-names: Patrick
+    - family-names: Kudulytė
+      given-names: Aistė
+    - family-names: Klaus
+      given-names: Severina
+    - family-names: Höfer
+      given-names: Thomas
+    - family-names: Schwarz
+      given-names: Ulrich S.
+    - family-names: Ganter
+      given-names: Markus
+    - family-names: Becker
+      given-names: Nils B.
+  journal: "Nature Communications"
+  volume: 17
+  start: 7413
+  year: 2026
+  doi: 10.1038/s41467-026-75378-x

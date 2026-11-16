@@ -7,10 +7,14 @@ Companion code for reproducing all figures in:
 > **Competitive resource allocation drives asynchronous and rapid nuclear
 > multiplication in the malaria parasite**
 >
-> Patrick Binder, Aiste Kudulyte, Severina Klaus, Thomas Höfer,
-> Ulrich S. Schwarz, Markus Ganter, Nils B. Becker (2025)
+> Patrick Binder, Aistė Kudulytė, Severina Klaus, Thomas Höfer,
+> Ulrich S. Schwarz, Markus Ganter, Nils B. Becker
 >
-> bioRxiv [doi:10.1101/2025.08.07.669072](https://doi.org/10.1101/2025.08.07.669072)
+> *Nature Communications* **17**, 7413 (2026).
+> [doi:10.1038/s41467-026-75378-x](https://doi.org/10.1038/s41467-026-75378-x)
+
+The preprint is available on bioRxiv
+([doi:10.1101/2025.08.07.669072](https://doi.org/10.1101/2025.08.07.669072)).
 
 This package implements stochastic branching-process models for DNA
 replication timing in *Plasmodium falciparum* schizogony.
@@ -61,9 +65,9 @@ After installation the subpackages `srs.lib`, `srs.model2` and
 
 | Model   | `DataSet` enum    | Description                                                             |
 |---------|-------------------|-------------------------------------------------------------------------|
-| Model 1 | `MODEL1`         | Independent branching process — no kinship inheritance.  Subset of model 2 with all off-diagonal correlations removed except the D-sister correlation (d0 ↔ d1). |
-| Model 2 | `BARMODEL`       | Correlated branching process — full empirical kinship correlation matrix. |
-| Model 3 | `RESMODEL` / `RESPARMODEL` | Resource-sharing branching process — sequential or parallel sharing of a finite replication resource. |
+| Model 1 | `MODEL1`         | Independent branching process without kinship inheritance.  Subset of model 2 with all off-diagonal correlations removed except the D-sister correlation (d0 ↔ d1). |
+| Model 2 | `BARMODEL`       | Correlated branching process with the full empirical kinship correlation matrix. |
+| Model 3 | `RESMODEL` / `RESPARMODEL` | Resource-sharing branching process with sequential or parallel sharing of a finite replication resource. |
 
 ## Reproducing the paper figures
 
@@ -71,23 +75,24 @@ All figure-generating functions live inside the package and can be called
 from a Python session (or a short script).  Start by activating the
 environment and launching Python from the repository root.
 
+All output PDFs are saved to `src/srs/fig/`, which is created on first use.
+
 > **Expected run times:** Plotting functions take a few
 > minutes each.  Generating the full parameter-scan data for Fig. 4 & Fig. 5
 > (`run_simulation_for_fig45` over the complete grid) takes days to weeks.
 
-### Figure 2 — Correlated branching process (model 2)
+### Figure 2: Correlated branching process (model 2)
 
 ```python
 from srs.model2.plotting.fig2 import plot_fig2
 plot_fig2()
 ```
 
+Output: main Fig. 2 and SI Figs. S1 and S2.
 
-Output PDFs are saved to the `fig/` directory.
+### Figures 4 & 5: Resource-sharing dynamics (model 3)
 
-### Figures 4 & 5 — Resource-sharing dynamics (model 3)
-
-#### Step 0 — Generate data
+#### Step 0: Generate data
 
 Generate the simulation data (parameter scans over scarcity ζ and delay τ).
 
@@ -98,11 +103,11 @@ from srs.model3.generate.fig45 import run_simulation_for_fig45
 run_simulation_for_fig45(zeta=1.0, tau=0.2, n_sample=480, n_gen=15, std=0.1)
 ```
 
-This writes results to a newline-delimited JSON file in `data/`.
+This appends the results to a newline-delimited JSON file in `src/srs/data/`.
 You typically run many `(zeta, tau)` combinations (see
 `model3/generate/fig45.py` for the full parameter grid).
 
-#### Step 1 — Plot
+#### Step 1: Plot
 
 ```python
 from srs.model3.plotting.fig45 import plot_fig45
@@ -110,11 +115,13 @@ from srs.model3.plotting.fig45 import plot_fig45
 plot_fig45()
 ```
 
+Output: main Figs. 4 and 5 and SI Fig. S3.
 
-> **Note:**  Step 0 can also be skipped. Simply calling `plot_fig45()` without
-> specifying a file uses pre-computed scan files from `data\` instead.
+> **Note:**  Step 0 can also be skipped. Calling `plot_fig45()` without
+> specifying a file uses the pre-computed scan files in `src/srs/data/`.
+> To plot your own scan from Step 0, pass its path via `filename=...`.
 
-### Figure 6 — Simulated vs. experimental replication timing (model 3)
+### Figure 6: Simulated vs. experimental replication timing (model 3)
 
 ```python
 from srs.model3.default_params import DEFAULT_PARAMS, F_THRESHOLD
@@ -128,17 +135,17 @@ Key parameters:
 | Parameter     | Default              | Description                                  |
 |---------------|----------------------|----------------------------------------------|
 | `params`      | `DEFAULT_PARAMS`     | MAP parameter estimates from ABC-SMC         |
-| `f_threshold` | `F_THRESHOLD` (0.15) | c<sub>i,min</sub> — activated-fraction threshold for S-phase |
+| `f_threshold` | `F_THRESHOLD` (0.15) | c<sub>i,min</sub>, activated-fraction threshold for S-phase |
 | `n`           | `500`                | Number of simulated realisations             |
 | `drop_data`   | `DropData.SUBTREE`   | How to filter incomplete sister pairs        |
 
-Output: three PDFs in `fig/` (main Fig. 6, Airyscan SI Fig. S7, fitting
-diagnostics Fig. S4).
+Output: main Fig. 6, Airyscan SI Fig. S7 and fitting diagnostics
+SI Fig. S4.
 
 ## Project structure
 
 ```
-srs/
+seq-resource-sharing-code/
 ├── pyproject.toml          # Package metadata (pip install -e .)
 ├── src/srs/
 │   ├── lib/                    # Shared library
@@ -161,3 +168,29 @@ srs/
 │   └── fig/                    # Generated figures (PDF output)
 └── tests/                      # Unit tests
 ```
+
+## Citation
+
+If you use this code, please cite the paper:
+
+```bibtex
+@article{binder2026competitive,
+  author  = {Binder, Patrick and Kudulyt{\.e}, Aist{\.e} and Klaus, Severina and
+             H{\"o}fer, Thomas and Schwarz, Ulrich S. and Ganter, Markus and
+             Becker, Nils B.},
+  title   = {Competitive resource allocation drives asynchronous and rapid
+             nuclear multiplication in the malaria parasite},
+  journal = {Nature Communications},
+  volume  = {17},
+  pages   = {7413},
+  year    = {2026},
+  doi     = {10.1038/s41467-026-75378-x}
+}
+```
+
+The archived code itself is available on Zenodo
+([doi:10.5281/zenodo.20698728](https://doi.org/10.5281/zenodo.20698728)).
+
+## License
+
+MIT, see [`LICENSE`](LICENSE).
