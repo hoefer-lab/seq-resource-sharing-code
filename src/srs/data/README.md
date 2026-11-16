@@ -1,6 +1,6 @@
 # Data files
 
-## Experimental data — Klaus et al.  (spinning-disk confocal)
+## Experimental data: Klaus et al. (spinning-disk confocal)
 
 | File | Contents | Used by |
 |------|----------|---------|
@@ -10,7 +10,7 @@
 | `klaus_sd_phase_timing_long.csv` | Extended S/D-phase timing for replication rounds 1–8 (longer recordings than `klaus_sd_phase_timing.csv`). Includes S-phase overlap and end-of-replication-to-division intervals. | `_klaus_read_data_sd2()` → S/D-phase DataFrames |
 | `klaus_longitudinal_traces.csv` | Longitudinal single-cell traces: per-parasite columns (`r_`, `c_`, `g_` prefixes) encoding replication state, nuclei-in-S-phase count, and growth over time. | `_klaus_get_data_longitudinal()` → bulk statistics |
 
-## Experimental data — Airyscan (Zeiss LSM900)
+## Experimental data: Airyscan (Zeiss LSM900)
 
 | File | Contents | Used by |
 |------|----------|---------|
